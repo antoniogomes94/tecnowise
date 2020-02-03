@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Tecnowise.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Listagem";
+}
+
+<h1>Clientes</h1>
+
+<p>
+    <a asp-action="Cadastro">Cadastrar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Cadastro", new { id=item.Id} ) |
+                @Html.ActionLink("Excluir", "Delete", new { id = item.Id} ) |
+                <!-- Button trigger modal -->
+                <a data-toggle="modal" data-target="#exampleModal">
+                    Detalhes
+                </a>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">@item.Nome</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row details">
+                                    <div>Email: @item.Email</div>
+                                    <div>Telefone: @item.Telefone</div>
+                                    <div>CEP: @item.CEP</div>
+                                    <div>Endereço: @item.Endereco</div>
+                                    <div>Bairro: @item.Bairro</div>
+                                    <div>Municipio: @item.Municipio</div>
+                                    <div>UF: @item.UF</div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+

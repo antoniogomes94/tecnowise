@@ -1,0 +1,123 @@
+﻿@{
+    ViewData["Title"] = "Cadastro";
+}
+@model Cliente
+
+<h3>Cadastro</h3>
+<form asp-action="salvar" method="post">
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="form-group col-md-1">
+                    <label class="control-label" for="nomeId">Id</label>
+                    <input type="text" class="form-control" id="idCliente" placeholder="ID"
+                           asp-for="@Model.Id" readonly>
+                </div>
+                <div class="form-group col-md-11">
+                    <label class="control-label" for="nomeCliente">Nome do Cliente</label>
+                    <input type="text" class="form-control" id="nomeCliente" placeholder="Nome do Cliente"
+                           asp-for="@Model.Nome" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label class="control-label" for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email"
+                           asp-for="@Model.Email" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="control-label" for="telefone">Telefone</label>
+                    <input type="text" class="form-control" id="telefone" placeholder="Telefone"
+                           asp-for="@Model.Telefone" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label class="control-label" for="cep">CEP</label>
+                    <input type="text" class="form-control" id="cep" placeholder="CEP"
+                           asp-for="@Model.CEP" aria-describedby="descricao" required>
+                    <small id="descricao" class="text-muted">
+                        Dica: Digite o CEP e tecle TAB.
+                    </small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="control-label" for="endereco">Endereço</label>
+                    <input type="text" class="form-control" id="endereco" placeholder="Endereço"
+                           asp-for="@Model.Endereco" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-5">
+                    <label class="control-label" for="bairro">Bairro</label>
+                    <input type="text" class="form-control" id="bairro" placeholder="Bairro"
+                           asp-for="@Model.Bairro" required>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label class="control-label" for="municipio">Município</label>
+                    <input type="text" class="form-control" id="municipio" placeholder="Município"
+                           asp-for="@Model.Municipio" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label" for="UF">UF</label>
+                    <select id="uf" class="form-control single-select" name="UF"
+                            asp-for="@Model.UF" required>
+                        <option selected value="">[Selecione o estado]</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <div class="form-group">
+                    <button type="submit"
+                            class="btn btn-success">
+                        Salvar
+                    </button>
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-success" asp-action="Cancelar" asp-route-id="@Model.Id">
+                        Cancelar
+                    </a>
+                </div>
+                @*<div class="form-group">
+                    <a class="btn btn-success" asp-action="Delete">
+                        Excluir
+                    </a>
+                </div>*@
+            </div>
+        </div>
+    </div>
+</form>
+
+<script src="~/js/cep.js">
+</script>
